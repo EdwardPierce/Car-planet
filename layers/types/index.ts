@@ -41,22 +41,3 @@ export interface ModalProps {
   children?: React.ReactNode;
   car: CarProps;
 }
-
-export interface SearchManuFacturerProps {
-  setManufacturer: (manufuturer: string) => void;
-}
-
-export interface CustomFilterProps {
-  title: string;
-  options: OptionProps[];
-}
-
-interface OptionProps {
-  title: string;
-  value: string;
-}
-
-export interface ShowMoreProps {
-  pageNumber: number;
-  isNext: boolean;
-}
