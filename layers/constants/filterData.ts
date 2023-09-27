@@ -57,8 +57,8 @@ export const yearsOfProduction = [
 
 export const fuels = [
   {
-    title: "Fuel",
-    value: "",
+    title: "Diesel",
+    value: "Diesel",
   },
   {
     title: "Gas",

@@ -1,4 +1,4 @@
-export const allLocalCars= [
+export const allLocalCars = [
   {
     city_mpg: 19,
     class: "minivan",
