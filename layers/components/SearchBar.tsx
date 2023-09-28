@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import SearchManufacturer from "./SearchManufacturer";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState("");
@@ -43,21 +44,40 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex">
-      <div>
-        <SearchManufacturer setManufacturer={setManufacturer} />
-      </div>
-
-      <div>
-        <input
-          type="text"
-          value={model}
-          onChange={(e) => setModel(e.currentTarget.value)}
-          placeholder="Write model"
+    <form
+      onSubmit={handleSearch}
+      className="flex items-center justify-start max-sm:flex-col w-full relative max-sm:gap-4 max-w-4xl"
+    >
+      <div className="flex-1 max-sm:w-full flex justify-start items-center relative">
+        <SearchManufacturer
+          manufacturer={manufacturer}
+          setManufacturer={setManufacturer}
         />
       </div>
+      <div className="flex-1  max-sm:w-full flex justify-start items-center relative">
+        <Image
+          src="/model-icon.png"
+          width={25}
+          height={25}
+          className="absolute w-[20px] h-[20px] ml-4"
+          alt="car model"
+        />
+        <input
+          type="text"
+          name="model"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+          placeholder="Tiguan..."
+          className="w-full bg-blue-100 h-[48px] pl-12 p-4 bg-light-white rounded-r-full max-sm:rounded-full outline-none cursor-pointer text-sm"
+        />
 
-      <button type="submit">Submit</button>
+        <button
+          className="bg-blue-500 w-20 ml-2 text-white py-2 px-6 rounded-full"
+          type="submit"
+        >
+          Find
+        </button>
+      </div>
     </form>
   );
 };

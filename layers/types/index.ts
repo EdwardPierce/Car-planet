@@ -43,7 +43,8 @@ export interface ModalProps {
 }
 
 export interface SearchManuFacturerProps {
-  setManufacturer: (manufuturer: string) => void;
+  manufacturer: string;
+  setManufacturer: (manufacturer: string) => void;
 }
 
 export interface CustomFilterProps {

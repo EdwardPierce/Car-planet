@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* START: search manufacturer styles */
+.search-manufacturer {
+  @apply flex-1 max-sm:w-full flex justify-start items-center;
+}
+
+.search-manufacturer__input {
+  @apply w-full h-[48px] pl-12 p-4 rounded-l-full max-sm:rounded-full  outline-none cursor-pointer text-sm;
+}
+
+.search-manufacturer__options {
+  @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+}
+
+.search-manufacturer__option {
+  @apply cursor-default select-none py-2 pl-10 pr-4;
+}
+/* END: search manufacturer styles */
+
+/* Style the select element */
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px; /* Adjust the maximum width as needed */
+  background-color: #fff; /* Background color for the select element */
+  color: #333; /* Text color */
+  cursor: pointer; /* Change cursor style on hover */
+  outline: none; /* Remove the outline on focus (customize as needed) */
+}
+
+/* Style the options */
+select option {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fff; /* Background color for options */
+  color: #333; /* Text color for options */
+}
+
+/* Style the options on hover */
+select option:hover {
+  background-color: #811111; /* Background color for options on hover */
+  color: #333; /* Text color for options on hover */
+}

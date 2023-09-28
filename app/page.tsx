@@ -25,7 +25,7 @@ const Home = async ({ searchParams }: HomeProps) => {
     <div>
       <Hero />
 
-      <div className="px-20 mt-10">
+      <div className="px-20 mt-10" id="discover">
         <div>
           <h3 className="text-5xl font-medium">Car Catalogue</h3>
           <p className="text-xl text-gray-800 mt-4">
@@ -38,7 +38,7 @@ const Home = async ({ searchParams }: HomeProps) => {
             <SearchBar />
           </div>
 
-          <div>
+          <div className="mt-10">
             <CustomFilter title="fuel" options={fuels} />
             <CustomFilter title="year" options={yearsOfProduction} />
           </div>

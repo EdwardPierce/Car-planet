@@ -25,7 +25,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
         onChange={(e) => handleUpdateParams(title, e.currentTarget.value)}
       >
         {options.map((option) => (
-          <option key={option.title}>{option.value}</option>
+          <option key={option.title}>{option.title}</option>
         ))}
       </select>
     </div>

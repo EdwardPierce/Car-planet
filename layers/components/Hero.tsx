@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 
 const Hero = () => {
+  const handleScroll = () => {
+    const nextSection = document.getElementById("discover");
+
+    nextSection?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="mt-20">
       <div className="px-20">
@@ -16,7 +24,10 @@ const Hero = () => {
         </div>
 
         <div>
-          <button className="bg-blue-500 px-6 py-2 text-white rounded-full mt-10">
+          <button
+            onClick={handleScroll}
+            className="bg-blue-500 px-6 py-2 text-white rounded-full mt-10"
+          >
             Explore Cars
           </button>
         </div>

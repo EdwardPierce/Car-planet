@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Topbar = () => {
@@ -6,9 +7,17 @@ const Topbar = () => {
     <div className="mt-4">
       <div className="px-20 h-10">
         <div className="flex flex-row justify-between items-center">
-          <div className="relative w-[150px] h-10">
-            <Image src="/logo.svg" alt="logo" fill className="object-contain" />
-          </div>
+          <Link href="/" className="flex items-center">
+            <div className="relative w-10  h-10">
+              <Image
+                src="/model-icon.png"
+                alt="logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <h2 className="text-3xl font-bold text-blue-950">CarPlanet</h2>
+          </Link>
 
           <div>
             <div
