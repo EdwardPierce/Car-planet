@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Topbar = () => {
+const Topbar = async () => {
   return (
     <div className="mt-4">
       <div className="px-20 h-10">

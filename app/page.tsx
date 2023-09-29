@@ -1,12 +1,17 @@
-import CarCard from "@/layers/components/CarCard";
-import CustomFilter from "@/layers/components/CustomFilter";
-import Hero from "@/layers/components/Hero";
-import SearchBar from "@/layers/components/SearchBar";
-import ShowMore from "@/layers/components/ShowMore";
-import { allLocalCars as allCars } from "@/layers/constants/carsData";
-import { fuels, yearsOfProduction } from "@/layers/constants/filterData";
-import { HomeProps } from "@/layers/types";
-import { fetchCars } from "@/layers/utils";
+import CarCard from "@/layers/mainPage/components/CarCard";
+import CustomFilter from "@/layers/mainPage/components/CustomFilter";
+import Hero from "@/layers/mainPage/components/Hero";
+import MainPage from "@/layers/mainPage/components/MainPage";
+import SearchBar from "@/layers/mainPage/components/SearchBar";
+import ShowMore from "@/layers/mainPage/components/ShowMore";
+import { SwiperImage } from "@/layers/mainPage/components/Swiper";
+import { allLocalCars as allCars } from "@/layers/mainPage/constants/carsData";
+import {
+  fuels,
+  yearsOfProduction,
+} from "@/layers/mainPage/constants/filterData";
+import { HomeProps } from "@/layers/mainPage/types";
+import { fetchCars } from "@/layers/mainPage/utils";
 
 import React from "react";
 
@@ -15,15 +20,25 @@ const Home = async ({ searchParams }: HomeProps) => {
   //   manufacturer: searchParams.manufacturer || "",
   //   year: searchParams.year || 2022,
   //   model: searchParams.model || "",
-  //   limit: searchParams.limit || 10,
+  //   limit: searchParams.limit || 100,
   //   fuel: searchParams.fuel || "",
   // });
+
+  // const res = await fetch(process.env.SERVER_URL + "/api/ex", {
+  //   method: "GET",
+  //   cache: "no-store",
+  // });
+
+  // const data = await res.json();
+  // console.log(data);
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
     <div>
-      <Hero />
+      <div className="">
+        <SwiperImage />
+      </div>
 
       <div className="px-20 mt-10" id="discover">
         <div>
@@ -45,18 +60,7 @@ const Home = async ({ searchParams }: HomeProps) => {
         </div>
 
         {!isDataEmpty ? (
-          <section>
-            <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 pt-14">
-              {allCars.map((car) => (
-                <CarCard key={car.make + car.model + car.city_mpg} car={car} />
-              ))}
-            </div>
-
-            <ShowMore
-              pageNumber={(searchParams.limit || 10) / 10}
-              isNext={(searchParams.limit || 10) > allCars.length}
-            />
-          </section>
+          <MainPage allCars={allCars} />
         ) : (
           <div>Oops, no results</div>
         )}

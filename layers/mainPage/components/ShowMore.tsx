@@ -18,6 +18,7 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
 
     router.push(newPathname);
   };
+
   return (
     <div className="flex flex-col items-center mt-10">
       {!isNext && (

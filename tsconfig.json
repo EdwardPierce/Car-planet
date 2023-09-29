@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "layers/utils/usePagination.ts"
+    "layers/utils/hooks/usePagination.ts",
+    "layers/utils/hooks/Pagination.js"
   ],
   "exclude": ["node_modules"]
 }
