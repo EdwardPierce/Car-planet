@@ -5,7 +5,7 @@ import SearchManufacturer from "./SearchManufacturer";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const SearchBar = ({  }) => {
+const SearchBar = ({}) => {
   const [manufacturer, setManufacturer] = useState("");
   const [model, setModel] = useState("");
 

@@ -24,9 +24,10 @@ const Home = async ({ searchParams }: HomeProps) => {
   //   fuel: searchParams.fuel || "",
   // });
 
-  // const res = await fetch(process.env.SERVER_URL + "/api/ex", {
-  //   method: "GET",
+  // const res = await fetch(process.env.URL + "/api/auth/register", {
+  //   method: "POST",
   //   cache: "no-store",
+  //   body: JSON.stringify({ mess: 3333 }),
   // });
 
   // const data = await res.json();
