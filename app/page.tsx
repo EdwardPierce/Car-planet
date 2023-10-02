@@ -27,7 +27,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   // const res = await fetch(process.env.URL + "/api/auth/register", {
   //   method: "POST",
   //   cache: "no-store",
-  //   body: JSON.stringify({ mess: 3333 }),
+  //   body: JSON.stringify({ email: 3333 }),
   // });
 
   // const data = await res.json();
