@@ -1,9 +1,13 @@
 import userService from "@/server/service/user-service";
+import { connectToDB } from "@/server/utils/mongoose";
 import { cookies } from "next/headers";
 
-export async function PUT(request: Request) {
+export async function POST(request: Request) {
   try {
+    connectToDB();
+
     const refreshToken = cookies().get("refreshToken");
+    // console.log("refreshToken?.value ", refreshToken?.value);
 
     const userData = await userService.refresh(refreshToken?.value);
 
@@ -15,6 +19,11 @@ export async function PUT(request: Request) {
     return Response.json(userData);
   } catch (error) {
     console.error(error);
-    return Response.error();
+    if (error instanceof Error) {
+      return Response.json(error.message, {
+        status: 401,
+        statusText: error.message,
+      });
+    }
   }
 }

@@ -19,12 +19,19 @@ const Topbar = async () => {
             <h2 className="text-3xl font-bold text-blue-950">CarPlanet</h2>
           </Link>
 
-          <div>
+          <div className="flex gap-4">
             <div
               className="px-4 py-2 text-blue-500 border
              border-blue-500 rounded-full hover:bg-blue-500 hover:text-white cursor-pointer"
             >
-              Sign up
+              <Link href="/register"> Sign up</Link>
+            </div>
+
+            <div
+              className="px-4 py-2 text-blue-500 border
+             border-blue-500 rounded-full hover:bg-blue-500 hover:text-white cursor-pointer"
+            >
+              <Link href="/login"> Sign in</Link>
             </div>
           </div>
         </div>

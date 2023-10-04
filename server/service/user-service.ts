@@ -55,6 +55,7 @@ class UserService {
     }
 
     const userData = tokenService.validateRefreshToken(refreshToken);
+
     const tokenFromDb = await tokenService.findToken(refreshToken);
 
     if (!userData) {

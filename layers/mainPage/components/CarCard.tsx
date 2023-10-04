@@ -36,8 +36,8 @@ const CarCard = ({ car }: AdapterCarProps) => {
 
       <div className="w-1/2 h-40 relative mx-auto">
         <Image
-          src={generateCarImageUrl(car)}
-          // src="/hero.png"
+          // src={generateCarImageUrl(car)}
+          src="/hero.png"
           alt="carcard"
           fill
           priority

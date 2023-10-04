@@ -1,9 +1,13 @@
 interface AuthResponse {
+  status: string;
+  isAuth: boolean;
   accessToken: string;
   refreshToken: string;
-  user: {
-    email: string;
-    id: string;
-    username: string;
-  };
+  user: IUser;
+}
+
+interface IUser {
+  email: string;
+  id: string;
+  username: string;
 }

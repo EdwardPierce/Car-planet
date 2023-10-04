@@ -16,11 +16,14 @@ export async function POST(request: Request) {
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
 
-    
-
     return Response.json(userData);
   } catch (error) {
     console.error(error);
-    return Response.json({ error });
+    if (error instanceof Error) {
+      return Response.json(error.message, {
+        status: 400,
+        statusText: error.message,
+      });
+    }
   }
 }

@@ -12,7 +12,7 @@ interface IUserBody {
 export async function POST(request: Request) {
   try {
     connectToDB();
-    
+
     const { email, password, username }: IUserBody = await request.json();
 
     const userData = await userService.register(email, password, username);
@@ -25,6 +25,8 @@ export async function POST(request: Request) {
     return Response.json({ userData });
   } catch (error) {
     console.error(error);
-    return Response.json({ error });
+    if (error instanceof Error) {
+      return Response.json(error.message);
+    }
   }
 }

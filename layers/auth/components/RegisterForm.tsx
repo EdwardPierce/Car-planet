@@ -2,10 +2,10 @@
 
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../store/authSlice";
-import { useAppSelector, useAppDispath } from "@/layers/lib/hooks/redux";
+import { register } from "../store/authSlice";
+import { useAppDispath, useAppSelector } from "@/layers/lib/hooks/redux";
 
-const LoginForm: FC = () => {
+const RegisterForm: FC = () => {
   const dispatch = useAppDispath();
 
   const isAuth = useAppSelector((state) => state.auth.isAuth);
@@ -14,16 +14,16 @@ const LoginForm: FC = () => {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
 
   useEffect(() => {
     if (status === "succeeded" && typeof accessToken === "string") {
       localStorage.setItem("token", accessToken);
-      console.count("status");
     }
   }, [status, accessToken]);
 
-  const handleLogin = async () => {
-    dispatch(login({ email, password }));
+  const handleRegister = () => {
+    dispatch(register({ email, password, username }));
   };
 
   console.log("isAuth: ", isAuth);
@@ -44,10 +44,16 @@ const LoginForm: FC = () => {
         value={password}
         placeholder="password"
       />
+      <input
+        type="text"
+        onChange={(e) => setUsername(e.currentTarget.value)}
+        value={username}
+        placeholder="username"
+      />
 
-      <button onClick={handleLogin}>Login </button>
+      <button onClick={handleRegister}>Register </button>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
