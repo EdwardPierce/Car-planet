@@ -28,7 +28,7 @@ const CarDetails = ({ isOpen, onClose, car }: ModalProps) => {
     <dialog
       ref={modelRef}
       onKeyDown={handleEscapeButton}
-      className=" backdrop:bg-black/50 max-w-lg max-h-[90vh] w-full flex flex-col p-6 rounded-2xl"
+      className=" backdrop:bg-black/50 z-20 max-w-lg max-h-[90vh] w-full flex flex-col p-6 rounded-2xl"
     >
       <div className="relative flex flex-col flex-1">
         <button

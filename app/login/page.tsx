@@ -5,7 +5,7 @@ import React from "react";
 
 const Login = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <LoginForm />
     </div>
   );

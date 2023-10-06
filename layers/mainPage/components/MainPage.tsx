@@ -29,20 +29,14 @@ const MainPage = ({ allCars }: AdapterAllCarsArray) => {
     return allCars.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, allCars]);
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      dispatch(checkAuth());
-    }
-  }, [dispatch]);
-
-  console.log("isAuth ", isAuth);
-  console.log("status ", status);
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     dispatch(checkAuth());
+  //   }
+  // }, [dispatch]);
 
   return (
     <section>
-      <h1 className="text-3xl text-red-500">
-        {isAuth ? `The user authorized with ${user.email}` : "Log in"}{" "}
-      </h1>
       <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 pt-14">
         {currentTableData.map((car) => (
           <CarCard key={car.make + car.model + car.city_mpg} car={car} />
