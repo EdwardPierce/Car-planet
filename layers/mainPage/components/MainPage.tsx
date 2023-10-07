@@ -2,24 +2,21 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 
-import CarCard from "./CarCard";
+import CarCard from "./cards/CarCard";
 import Pagination from "../utils/hooks/Pagination";
-import { checkAuth } from "@/layers/auth/store/authSlice";
+import { setAuth } from "@/layers/auth/store/authSlice";
 import { useAppDispath, useAppSelector } from "@/layers/lib/hooks/redux";
 import { CarProps } from "../types";
 import { all } from "axios";
+import AuthService from "@/layers/auth/service/AuthService";
+import { useQuery } from "react-query";
+import { useCheckAuth } from "@/layers/lib/hooks/checkAuth";
 
 type AdapterAllCarsArray = {
   allCars: CarProps[];
 };
 
 const MainPage = ({ allCars }: AdapterAllCarsArray) => {
-  const dispatch = useAppDispath();
-
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  const status = useAppSelector((state) => state.auth.status);
-  const user = useAppSelector((state) => state.auth.user);
-
   const [currentPage, setCurrentPage] = useState(1);
 
   const PageSize = 10;
@@ -29,11 +26,7 @@ const MainPage = ({ allCars }: AdapterAllCarsArray) => {
     return allCars.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, allCars]);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     dispatch(checkAuth());
-  //   }
-  // }, [dispatch]);
+  useCheckAuth();
 
   return (
     <section>

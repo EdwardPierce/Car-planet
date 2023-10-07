@@ -1,5 +1,6 @@
 "use client";
 
+import AuthService from "@/layers/auth/service/AuthService";
 import { logout } from "@/layers/auth/store/authSlice";
 import { useAppDispath, useAppSelector } from "@/layers/lib/hooks/redux";
 import Image from "next/image";
@@ -32,10 +33,14 @@ const UserInfo = () => {
 
   return (
     <div className="flex gap-4">
-      <p className="bg-gray-100 rounded-lg p-2">{user.email} </p>
-      <p className="bg-gray-100 rounded-lg p-2">User: {user.username} </p>
+      <p className="bg-gray-100 rounded-lg p-2">{user?.email} </p>
+      <p className="bg-gray-100 rounded-lg p-2">User: {user?.username} </p>
       <button
-        onClick={() => dispatch(logout())}
+        onClick={async () => {
+          await AuthService.logout();
+          localStorage.removeItem("token");
+          dispatch(logout());
+        }}
         className="px-4 py-2 text-blue-500 border
              border-blue-500 rounded-full hover:bg-blue-500 hover:text-white cursor-pointer"
       >

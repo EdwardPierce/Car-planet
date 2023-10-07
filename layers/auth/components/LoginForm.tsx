@@ -1,10 +1,9 @@
 "use client";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 
-import { login } from "../store/authSlice";
-import { useAppSelector, useAppDispath } from "@/layers/lib/hooks/redux";
-import { useForm, Controller, ControllerRenderProps } from "react-hook-form";
+import { useAppDispath } from "@/layers/lib/hooks/redux";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 
@@ -12,19 +11,13 @@ import * as z from "zod";
 import Input from "../ui/Input";
 import Link from "next/link";
 
+import { useMutation } from "react-query";
+import AuthService from "../service/AuthService";
+import { setAuth } from "../store/authSlice";
+
 const LoginForm: FC = () => {
   const router = useRouter();
   const dispatch = useAppDispath();
-
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  const status = useAppSelector((state) => state.auth.status);
-  const accessToken = useAppSelector((state) => state.auth.accessToken);
-
-  useEffect(() => {
-    if (status === "succeeded" && typeof accessToken === "string") {
-      localStorage.setItem("token", accessToken);
-    }
-  }, [status, accessToken]);
 
   const LoginValidation = z.object({
     email: z.string().email(),
@@ -42,17 +35,23 @@ const LoginForm: FC = () => {
   });
   const errors = form.formState.errors;
 
+  //React Query
+  const mutation = useMutation(({ email, password }: UserData) =>
+    AuthService.login(email, password)
+  );
+
   const handleLogin = async (values: Schema) => {
-    await dispatch(login({ email: values.email, password: values.password }));
-
-    if (status === "succeeded") {
-      router.back();
-    }
-
-    console.log(status);
+    mutation.mutate(
+      { email: values.email, password: values.password },
+      {
+        onSuccess: (response) => {
+          dispatch(setAuth(response.data.user));
+          localStorage.setItem("token", response.data.accessToken);
+          router.push("/");
+        },
+      }
+    );
   };
-
-  //  console.log("isAuth: ", isAuth);
 
   return (
     <>

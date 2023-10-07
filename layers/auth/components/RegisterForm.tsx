@@ -1,9 +1,8 @@
 "use client";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 
-import { login } from "../store/authSlice";
-import { useAppSelector, useAppDispath } from "@/layers/lib/hooks/redux";
+import { useAppDispath } from "@/layers/lib/hooks/redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -11,19 +10,13 @@ import { useRouter } from "next/navigation";
 import * as z from "zod";
 import Input from "../ui/Input";
 
+import { useMutation } from "react-query";
+import AuthService from "../service/AuthService";
+import { setAuth } from "../store/authSlice";
+
 const RegisterForm: FC = () => {
   const router = useRouter();
   const dispatch = useAppDispath();
-
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  const status = useAppSelector((state) => state.auth.status);
-  const accessToken = useAppSelector((state) => state.auth.accessToken);
-
-  useEffect(() => {
-    if (status === "succeeded" && typeof accessToken === "string") {
-      localStorage.setItem("token", accessToken);
-    }
-  }, [status, accessToken]);
 
   const LoginValidation = z.object({
     email: z.string().email(),
@@ -43,14 +36,23 @@ const RegisterForm: FC = () => {
   });
   const errors = form.formState.errors;
 
-  const handleLogin = async (values: Schema) => {
-    await dispatch(login({ email: values.email, password: values.password }));
+  const mutation = useMutation(
+    ({ email, password, username }: UserData & Username) =>
+      AuthService.register(email, password, username)
+  );
 
-    if (status === "succeeded") {
-      router.back();
-    }
+  const handleRegister = async ({ email, password, username }: Schema) => {
+    mutation.mutate(
+      { email, password, username },
+      {
+        onSuccess: (response) => {
+          dispatch(setAuth(response.data.user));
+          localStorage.setItem("token", response.data.accessToken);
 
-    console.log(status);
+          router.push("/");
+        },
+      }
+    );
   };
 
   return (
@@ -60,7 +62,7 @@ const RegisterForm: FC = () => {
       </div>
 
       <div className="bg-blue-100 max-w-sm w-full rounded-xl px-4 py-6">
-        <form onSubmit={form.handleSubmit(handleLogin)}>
+        <form onSubmit={form.handleSubmit(handleRegister)}>
           <Input
             name="email"
             control={form.control}

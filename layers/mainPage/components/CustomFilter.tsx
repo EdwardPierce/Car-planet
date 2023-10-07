@@ -22,6 +22,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
   return (
     <div>
       <select
+        className="select-filter"
         onChange={(e) => handleUpdateParams(title, e.currentTarget.value)}
       >
         {options.map((option) => (

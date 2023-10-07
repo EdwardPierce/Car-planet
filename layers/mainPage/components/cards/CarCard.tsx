@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { CarCardProps, CarProps } from "../types";
+import { CarCardProps, CarProps } from "../../types";
 import Image from "next/image";
-import { calculateCarRent, generateCarImageUrl } from "../utils";
-import CarDetails from "./CarDetails";
+import { calculateCarRent, generateCarImageUrl } from "../../utils";
+import CarDetails from "../dialog/CarDetails";
 
 interface AdapterCarProps {
   car: CarProps;

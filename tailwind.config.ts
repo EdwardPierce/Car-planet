@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         pattern: "url('/pattern.png')",
+        checkbox: "url('/check2.png')",
       },
     },
   },

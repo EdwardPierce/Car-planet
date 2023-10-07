@@ -1,4 +1,4 @@
-import Topbar from "@/layers/mainPage/components/Topbar";
+import Topbar from "@/layers/mainPage/components/shared/Topbar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import { ModalProps } from "../types";
+import { ModalProps } from "../../types";
 import Image from "next/image";
-import { generateCarImageUrl } from "../utils";
+import { generateCarImageUrl } from "../../utils";
 
 const CarDetails = ({ isOpen, onClose, car }: ModalProps) => {
   const modelRef = useRef<HTMLDialogElement | null>(null);

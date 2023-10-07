@@ -61,3 +61,9 @@ export interface ShowMoreProps {
   pageNumber: number;
   isNext: boolean;
 }
+
+export type ModalDialog = {
+  closeModal: () => void;
+  openModal: () => void;
+  isOpen: boolean;
+};

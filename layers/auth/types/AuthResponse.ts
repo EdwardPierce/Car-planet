@@ -1,13 +1,20 @@
-interface AuthResponse {
-  status: string;
-  isAuth: boolean;
+type AuthResponse = {
   accessToken: string;
   refreshToken: string;
   user: IUser;
-}
+};
 
-interface IUser {
+type IUser = {
   email: string;
   id: string;
   username: string;
-}
+};
+
+type UserData = {
+  email: string;
+  password: string;
+};
+
+type Username = {
+  username: string;
+};
