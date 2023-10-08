@@ -2,7 +2,7 @@ import CarCard from "@/layers/mainPage/components/cards/CarCard";
 import CustomFilter from "@/layers/mainPage/components/CustomFilter";
 import Hero from "@/layers/mainPage/components/shared/Hero";
 import MainPage from "@/layers/mainPage/components/MainPage";
-import SearchBar from "@/layers/mainPage/components/SearchBar";
+import SearchBar from "@/layers/deprecated/SearchBar";
 import ShowMore from "@/layers/mainPage/components/ShowMore";
 import { SwiperImage } from "@/layers/mainPage/components/Swiper";
 import { allLocalCars as allCars } from "@/layers/mainPage/constants/carsData";
@@ -14,6 +14,7 @@ import { HomeProps } from "@/layers/mainPage/types";
 import { fetchCars } from "@/layers/mainPage/utils";
 
 import React from "react";
+import SearchCars from "@/layers/mainPage/components/SearchCars";
 
 const Home = async ({ searchParams }: HomeProps) => {
   // const allCars = await fetchCars({
@@ -48,7 +49,8 @@ const Home = async ({ searchParams }: HomeProps) => {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-col">
+        <SearchCars />
+        {/* <div className="mt-10 flex flex-col">
           <div>
             <SearchBar />
           </div>
@@ -57,7 +59,7 @@ const Home = async ({ searchParams }: HomeProps) => {
             <CustomFilter title="fuel" options={fuels} />
             <CustomFilter title="year" options={yearsOfProduction} />
           </div>
-        </div>
+        </div> */}
 
         {!isDataEmpty ? (
           <MainPage allCars={allCars} />

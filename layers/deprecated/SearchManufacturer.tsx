@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import { SearchManuFacturerProps } from "../types";
-import { manufacturers } from "../constants/filterData";
+import { SearchManuFacturerProps } from "../mainPage/types";
+import { manufacturers } from "../mainPage/constants/filterData";
 
 const SearchManufacturer = ({
   manufacturer,

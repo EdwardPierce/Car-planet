@@ -13,7 +13,6 @@ export const useCheckAuth = () => {
         const response = await AuthService.checkAuth();
 
         dispatch(setAuth(response.data.user));
-        console.log(response);
       };
 
       checkAuth();

@@ -7,8 +7,6 @@ export async function POST(request: Request) {
     connectToDB();
 
     const refreshToken = cookies().get("refreshToken");
-    const allCookies = cookies().getAll();
-    console.log("allCookies: ", allCookies);
 
     const userData = await userService.refresh(refreshToken?.value);
 

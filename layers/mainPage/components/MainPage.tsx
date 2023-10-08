@@ -26,7 +26,7 @@ const MainPage = ({ allCars }: AdapterAllCarsArray) => {
     return allCars.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, allCars]);
 
-  useCheckAuth();
+  // useCheckAuth();
 
   return (
     <section>
