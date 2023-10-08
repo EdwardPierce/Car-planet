@@ -13,6 +13,8 @@ import Input from "../ui/Input";
 import { useMutation } from "react-query";
 import AuthService from "../service/AuthService";
 import { setAuth } from "../store/authSlice";
+import LoadingSpinner from "./LoadingSpinner";
+import { UserData, Username } from "../types/AuthResponse";
 
 const RegisterForm: FC = () => {
   const router = useRouter();
@@ -57,6 +59,7 @@ const RegisterForm: FC = () => {
 
   return (
     <div className="flex flex-col items-center">
+      {!!mutation.isLoading && <LoadingSpinner />}
       <div className="max-w-sm w-full my-10 flex justify-center px-10 text-3xl font-bold">
         Create account
       </div>

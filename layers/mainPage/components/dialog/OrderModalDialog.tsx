@@ -1,15 +1,15 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, ReactNode, useState } from "react";
 import OrderForm from "../forms/OrderForm";
 import { ModalDialog } from "../../types";
 
 export default function OrderModalDialog({
   closeModal,
-  openModal,
   isOpen,
-}: ModalDialog) {
+  children,
+}: ModalDialog & { children: ReactNode }) {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -38,7 +38,8 @@ export default function OrderModalDialog({
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel>
-                  <OrderForm closeModal={closeModal} />
+                  {/* <OrderForm closeModal={closeModal} /> */}
+                  {children}
                 </Dialog.Panel>
               </Transition.Child>
             </div>

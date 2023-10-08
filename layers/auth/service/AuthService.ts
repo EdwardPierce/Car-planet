@@ -1,5 +1,6 @@
 import $api from "../http";
 import axios, { AxiosResponse } from "axios";
+import { AuthResponse } from "../types/AuthResponse";
 
 export default class AuthService {
   static async login(
@@ -32,13 +33,13 @@ export default class AuthService {
     return;
   }
 
-  static async checkAuth(): Promise<AuthResponse> {
+  static async checkAuth(): Promise<AxiosResponse<AuthResponse>> {
     const response = await axios.post<AuthResponse>(
       process.env.NEXT_PUBLIC_URL + "/api/auth/refresh",
       {},
       { withCredentials: true }
     );
 
-    return response.data;
+    return response;
   }
 }

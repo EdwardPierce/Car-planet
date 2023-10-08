@@ -31,7 +31,6 @@ const Home = async ({ searchParams }: HomeProps) => {
   // });
 
   // const data = await res.json();
-  // console.log(data);
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 

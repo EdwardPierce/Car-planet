@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import OrderModalDialog from "../dialog/OrderModalDialog";
+import OrderForm from "../forms/OrderForm";
 
 const Hero = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -24,11 +25,9 @@ const Hero = () => {
   return (
     <div className="mt-20">
       <div className="px-20">
-        <OrderModalDialog
-          isOpen={isOpen}
-          openModal={openModal}
-          closeModal={closeModal}
-        />
+        <OrderModalDialog isOpen={isOpen} closeModal={closeModal}>
+          <OrderForm closeModal={closeModal} />
+        </OrderModalDialog>
 
         <div>
           <h2 className=" text-7xl font-bold">

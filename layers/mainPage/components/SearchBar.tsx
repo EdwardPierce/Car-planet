@@ -9,7 +9,6 @@ const SearchBar = ({}) => {
   const [manufacturer, setManufacturer] = useState("");
   const [model, setModel] = useState("");
 
-
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -41,7 +40,9 @@ const SearchBar = ({}) => {
       window.location.pathname
     }?${searchParams.toString()}`;
 
-    router.push(newPathname);
+    router.push(newPathname, {
+      scroll: false,
+    });
   };
 
   return (

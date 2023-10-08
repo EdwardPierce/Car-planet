@@ -34,6 +34,23 @@
   outline: none; /* Remove the outline on focus (customize as needed) */
 }
 
-.bg-line {
-  background-size: 100% 4rem;
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 100px;
+  height: 100px;
+  border: 6px solid #d8d8d8; /* Light grey */
+  border-top: 6px solid #019ece; /* Blue */
+  border-radius: 50%;
+  animation: spinner 1s ease-in-out infinite;
+}
+
+.spinner-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
 }

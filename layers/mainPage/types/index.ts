@@ -64,6 +64,6 @@ export interface ShowMoreProps {
 
 export type ModalDialog = {
   closeModal: () => void;
-  openModal: () => void;
+
   isOpen: boolean;
 };

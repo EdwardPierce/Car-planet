@@ -1,20 +1,24 @@
-type AuthResponse = {
+import { AxiosResponse } from "axios";
+
+export type AuthResponse = {
   accessToken: string;
   refreshToken: string;
   user: IUser;
 };
 
-type IUser = {
+export type IUser = {
   email: string;
   id: string;
   username: string;
 };
 
-type UserData = {
+export type UserData = {
   email: string;
   password: string;
 };
 
-type Username = {
+export type Username = {
   username: string;
 };
+
+

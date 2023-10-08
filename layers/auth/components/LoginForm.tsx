@@ -14,6 +14,8 @@ import Link from "next/link";
 import { useMutation } from "react-query";
 import AuthService from "../service/AuthService";
 import { setAuth } from "../store/authSlice";
+import LoadingSpinner from "./LoadingSpinner";
+import { UserData } from "../types/AuthResponse";
 
 const LoginForm: FC = () => {
   const router = useRouter();
@@ -55,6 +57,7 @@ const LoginForm: FC = () => {
 
   return (
     <>
+      {!!mutation.isLoading && <LoadingSpinner />}
       <div className="max-w-sm w-full my-10 flex justify-center px-10 text-3xl font-bold">
         Log in
       </div>
