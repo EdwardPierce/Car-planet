@@ -41,7 +41,7 @@ const Home = async ({ searchParams }: HomeProps) => {
         <SwiperImage />
       </div>
 
-      <div className="px-20 mt-10" id="discover">
+      <div className="px-2 sm:px-10 lg:px-20 mt-10" id="discover">
         <div>
           <h3 className="text-5xl font-medium">Car Catalogue</h3>
           <p className="text-xl text-gray-800 mt-4">
@@ -50,21 +50,17 @@ const Home = async ({ searchParams }: HomeProps) => {
         </div>
 
         <SearchCars />
-        {/* <div className="mt-10 flex flex-col">
-          <div>
-            <SearchBar />
-          </div>
-
+        <div className="mt-10 flex flex-col">
           <div className="mt-10">
             <CustomFilter title="fuel" options={fuels} />
             <CustomFilter title="year" options={yearsOfProduction} />
           </div>
-        </div> */}
+        </div>
 
         {!isDataEmpty ? (
-          <MainPage allCars={allCars} />
+          <MainPage allCars={allCars} searchParams={searchParams} />
         ) : (
-          <div>Oops, no results</div>
+          <div className="mt-10 text-5xl font-bold">Oops, no results</div>
         )}
       </div>
     </div>

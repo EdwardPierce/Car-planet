@@ -13,7 +13,7 @@ import Input from "../ui/Input";
 import { useMutation } from "react-query";
 import AuthService from "../service/AuthService";
 import { setAuth } from "../store/authSlice";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../../lib/LoadingSpinner";
 import { UserData, Username } from "../types/AuthResponse";
 
 const RegisterForm: FC = () => {

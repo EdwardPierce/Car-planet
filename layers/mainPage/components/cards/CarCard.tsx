@@ -19,7 +19,7 @@ const CarCard = ({ car }: AdapterCarProps) => {
   const carRent = calculateCarRent(city_mpg, year);
 
   return (
-    <div className="group flex flex-col bg-blue-100 p-6 rounded-2xl shadow-md max-w-md">
+    <div className="group w-full flex flex-col bg-blue-100 p-6 rounded-2xl shadow-md max-w-md">
       <div className="text-xl font-semibold capitalize">
         {make} {model}
       </div>

@@ -9,6 +9,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
 
   const handleUpdateParams = (type: string, value: string) => {
     const searchParams = new URLSearchParams(window.location.search);
+    console.log(`${searchParams}`);
 
     searchParams.set(type, value);
 
@@ -16,7 +17,9 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
       window.location.pathname
     }?${searchParams.toString()}`;
 
-    router.push(newPathname);
+    router.push(newPathname, {
+      scroll: false,
+    });
   };
 
   return (

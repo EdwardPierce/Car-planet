@@ -24,16 +24,16 @@ const Hero = () => {
 
   return (
     <div className="mt-20">
-      <div className="px-20">
+      <div className="px-2 sm:px-10 lg:px-20">
         <OrderModalDialog isOpen={isOpen} closeModal={closeModal}>
           <OrderForm closeModal={closeModal} />
         </OrderModalDialog>
 
         <div>
-          <h2 className=" text-7xl font-bold">
+          <h2 className=" text-4xl sm:text-5xl lg:text-7xl font-bold">
             Find, book, rent a car—quick and super easy!
           </h2>
-          <p className="text-2xl font-light mt-4">
+          <p className="text-lg sm:text-xl lg:text-2xl font-light mt-4">
             Streamline your car rental experience with our effortless booking
             process.
           </p>

@@ -6,17 +6,19 @@ import CarCard from "./cards/CarCard";
 import Pagination from "../utils/hooks/Pagination";
 import { setAuth } from "@/layers/auth/store/authSlice";
 import { useAppDispath, useAppSelector } from "@/layers/lib/hooks/redux";
-import { CarProps } from "../types";
+import { CarProps, FilterProps, HomeProps } from "../types";
 import { all } from "axios";
 import AuthService from "@/layers/auth/service/AuthService";
 import { useQuery } from "react-query";
 import { useCheckAuth } from "@/layers/lib/hooks/checkAuth";
+import ShowMore from "./ShowMore";
 
 type AdapterAllCarsArray = {
   allCars: CarProps[];
+  searchParams?: FilterProps;
 };
 
-const MainPage = ({ allCars }: AdapterAllCarsArray) => {
+const MainPage = ({ allCars, searchParams }: AdapterAllCarsArray) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const PageSize = 10;
@@ -30,16 +32,16 @@ const MainPage = ({ allCars }: AdapterAllCarsArray) => {
 
   return (
     <section>
-      <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 pt-14">
+      <div className="grid justify-items-center 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 pt-14">
         {currentTableData.map((car) => (
           <CarCard key={car.make + car.model + car.city_mpg} car={car} />
         ))}
       </div>
 
       {/* <ShowMore
-              pageNumber={(searchParams.limit || 10) / 10}
-              isNext={(searchParams.limit || 10) > allCars.length}
-            /> */}
+        pageNumber={(searchParams?.limit || 10) / 10}
+        isNext={(searchParams?.limit || 10) > allCars.length}
+      /> */}
 
       <Pagination
         className="w-full flex justify-center"

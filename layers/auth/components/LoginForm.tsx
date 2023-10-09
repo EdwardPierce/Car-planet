@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useMutation } from "react-query";
 import AuthService from "../service/AuthService";
 import { setAuth } from "../store/authSlice";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../../lib/LoadingSpinner";
 import { UserData } from "../types/AuthResponse";
 
 const LoginForm: FC = () => {

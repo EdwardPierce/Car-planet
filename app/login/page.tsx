@@ -1,6 +1,7 @@
 "use client";
 
 import LoginForm from "@/layers/auth/components/LoginForm";
+
 import React from "react";
 
 const Login = () => {

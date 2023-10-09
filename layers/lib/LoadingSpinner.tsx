@@ -1,3 +1,5 @@
+"use client";
+
 import OrderModalDialog from "@/layers/mainPage/components/dialog/OrderModalDialog";
 import { useState } from "react";
 
