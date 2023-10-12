@@ -1,6 +1,6 @@
 import $api from "../http";
 import axios, { AxiosResponse } from "axios";
-import { AuthResponse } from "../types/AuthResponse";
+import { AuthResponse } from "../types";
 
 export default class AuthService {
   static async login(

@@ -14,7 +14,7 @@ import { useMutation } from "react-query";
 import AuthService from "../service/AuthService";
 import { setAuth } from "../store/authSlice";
 import LoadingSpinner from "../../lib/LoadingSpinner";
-import { UserData, Username } from "../types/AuthResponse";
+import { UserData, Username } from "../types";
 
 const RegisterForm: FC = () => {
   const router = useRouter();

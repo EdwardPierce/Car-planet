@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { IUser } from "../types/AuthResponse";
+import { IUser } from "../types";
 
 type State = {
   isAuth: boolean;

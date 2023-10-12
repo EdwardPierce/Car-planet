@@ -15,7 +15,7 @@ import { useMutation } from "react-query";
 import AuthService from "../service/AuthService";
 import { setAuth } from "../store/authSlice";
 import LoadingSpinner from "../../lib/LoadingSpinner";
-import { UserData } from "../types/AuthResponse";
+import { UserData } from "../types";
 
 const LoginForm: FC = () => {
   const router = useRouter();
